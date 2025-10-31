@@ -21,8 +21,8 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // Static credentials from environment variables
-const TEST_USER_EMAIL = process.env.REACT_APP_TEST_USER_EMAIL || 'test@test.com';
-const TEST_USER_PASSWORD = process.env.REACT_APP_TEST_USER_PASSWORD || '12345';
+const TEST_USER_EMAIL = process.env.REACT_APP_TEST_USER_EMAIL || 'test@example.com';
+const TEST_USER_PASSWORD = process.env.REACT_APP_TEST_USER_PASSWORD || 'password123';
 const TEST_USER_FIRSTNAME = process.env.REACT_APP_TEST_USER_FIRSTNAME || 'Test';
 const TEST_USER_LASTNAME = process.env.REACT_APP_TEST_USER_LASTNAME || 'User';
 

@@ -6,9 +6,11 @@ import { defaultTheme } from './styles/theme';
 import { CartProvider } from './contexts/CartContext';
 import { AuthProvider } from './contexts/AuthContext';
 import { useServiceWorker } from './hooks/useServiceWorker';
+import { useInitialLoader } from './hooks/useInitialLoader';
 import { useAuth } from './contexts/AuthContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import InitialLoader from './components/InitialLoader';
 import LoadingFallback from './components/LazyLoading';
 
 // Основные компоненты с ленивой загрузкой
@@ -47,6 +49,12 @@ function App() {
 // Компонент для обработки loading состояния аутентификации
 function AppContent() {
   const { loading } = useAuth();
+  const { isInitialLoading, loadingProgress } = useInitialLoader();
+
+  // Показываем инициальный лоадер в первую очередь
+  if (isInitialLoading) {
+    return <InitialLoader progress={loadingProgress} />;
+  }
 
   // Показываем загрузочный экран пока проверяется аутентификация
   if (loading) {
